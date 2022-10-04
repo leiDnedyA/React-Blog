@@ -24,6 +24,10 @@
   color: rgba(100, 100, 50);
 }
 
+.navbarTitle:hover {
+  color: black;
+}
+
 .navbarLink {
   padding: 0 10px 0 10px;
   text-decoration: none;
