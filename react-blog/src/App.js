@@ -27,12 +27,15 @@ function App() {
   return (
     <div className="app">
       <Router>
-        <NavBar links={
-          [
-            {label: 'Home', address: '/'},
-            {label: 'Create Post', address: '/createpost'},
-            {label: 'Login', address: '/login'}
-          ]}></NavBar>
+        <NavBar 
+          links={
+            [
+              {label: 'Home', address: '/'},
+              {label: 'Create Post', address: '/createpost'},
+              {label: 'Login', address: '/login'}
+            ]}
+          title="Ayden's React Blog"
+          />
         <div className="body">
           <Routes>
             <Route path="/" element={<Home articles={sampleArticles}/>} />
