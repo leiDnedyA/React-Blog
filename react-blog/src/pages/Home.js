@@ -1,7 +1,15 @@
 import React from 'react';
+import Article from '../elements/Article';
 
-function Home() {
-    return (<div> Home </div>);
+function Home(props) {
+    return (<div className="home">
+        {props.articles.map(v => {
+            return (<Article 
+                title={v.title}
+                body={v.body}
+                />)
+        })}
+    </div>);
 }
 
 export default Home;
