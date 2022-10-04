@@ -3,6 +3,7 @@ import Article from '../elements/Article';
 
 function Home(props) {
     return (<div className="home">
+        <h2>Posts</h2>
         {props.articles.map(v => {
             return (<Article 
                 title={v.title}

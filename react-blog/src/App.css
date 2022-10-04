@@ -46,5 +46,13 @@
 }
 
 .navbarLink:hover {
-  color: rgb(25, 0, 25);
+  color: black;
+}
+
+.article {
+  color:rgba(150, 150, 100);
+}
+
+.article:hover {
+  color: black;
 }
