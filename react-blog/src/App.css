@@ -1,6 +1,5 @@
-
 .app {
-  
+  font-family: sans-serif;
 }
 
 .body {
@@ -13,8 +12,39 @@
   padding: 5px 20% 5px 20%;
 }
 
-.navBar {
+.navbar {
   display: flex;
   align-items: left;
   justify-content: left;
+  padding: 10px;
+}
+
+.navbarTitle {
+  padding: 0 5px 0 0;
+  color: rgba(100, 100, 50);
+}
+
+.navbarLink {
+  padding: 0 10px 0 10px;
+  text-decoration: none;
+  border-color: rgb(200, 200, 200);
+  border-width: 0 1px 0 1px;
+  border-style: solid;
+  color: rgb(200, 100, 100);
+}
+
+.navbarLinkLeft {
+  border-left: none;
+}
+
+.navbarLinkRight {
+  border-right: none;
+}
+
+.navbarLink:visited {
+  color: rgb(200, 100, 100);
+}
+
+.navbarLink:hover {
+  color: rgb(25, 0, 25);
 }

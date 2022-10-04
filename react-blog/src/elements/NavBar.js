@@ -7,20 +7,37 @@ import { Link } from 'react-router-dom'
  * links: Array.<{address: String, label: String}>
  * 
  */
-function NavBar(props) {
+function Navbar(props) {
     return (
-        <nav className="navBar">
-            <p>{props.title}</p>
+        <nav className="navbar">
+            <div className="navbarTitle">{props.title}</div>
             {
-            //convert links 
-            props.links.map(v => (
-                <Link to={v.address}>
-                    {v.label}
-                </Link>
-            ))
+
+                //convert links 
+                props.links.map((v, i) => {
+
+
+                    let classNames = ['navbarLink']
+
+                    if (i === 0) {
+                        classNames.push('navbarLinkLeft');
+                    } else if (i === props.links.length - 1) {
+                        classNames.push('navbarLinkRight')
+                    }
+
+                    let link = <Link
+                        className={classNames.join(' ')}
+                        to={v.address}
+                    >
+                        {v.label}
+                    </Link>;
+
+
+                    return link
+                })
             }
         </nav>
     )
 }
 
-export default NavBar;
+export default Navbar;
