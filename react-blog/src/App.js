@@ -9,6 +9,8 @@ const sampleArticleBody = "Lorem ipsum dolor sit amet, consectetur adipiscing el
 
 const sampleArticles = []
 
+const names = ['Ayden', 'John', 'Jack', 'Kendrick', 'Kanye', 'Kodak', 'Kobe']
+
 const randomInt = (min, max)=>{
   let n = Math.floor((Math.random() * (max - min)) + min);
   console.log(n)
@@ -18,7 +20,8 @@ const randomInt = (min, max)=>{
 for(let i = 0; i < 10; i++){
   sampleArticles.push({
     title: `Sample article number ${i+1}`,
-    body: sampleArticleBody.slice(0, randomInt(0, sampleArticleBody.length))
+    body: sampleArticleBody.slice(0, randomInt(0, sampleArticleBody.length)),
+    author: names[randomInt(0, names.length)],
   })
 }
 

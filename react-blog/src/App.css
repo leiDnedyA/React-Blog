@@ -1,40 +1,73 @@
+/* @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
+
+:root {
+  --main-color: rgb(200, 200, 200);
+  --secondary-color: rgb(150, 150, 150);
+  --terciary-color: rgb(20, 20, 30);
+  --off-white: rgb(184, 251, 211);
+  --accent-color: rgb(124, 255, 161);
+}
+
+body {
+  margin: 0;
+  background-color: var(--terciary-color);
+  color: var(--off-white);
+}
+
 .app {
-  font-family: sans-serif;
+  font-family: 'Cormorant Garamond', sans-serif;
 }
 
 .body {
   display: flex;
+  margin: 5px;
   align-items: center;
   justify-content: center;
 }
 
 .home {
+  margin-top: 60px;
   padding: 5px 20% 5px 20%;
 }
 
 .navbar {
+  width: 100%;
+  top: 0;
+  position: fixed;
   display: flex;
+  background-color: var(--terciary-color);
+  color: var(--main-color);
   align-items: left;
   justify-content: left;
   padding: 10px;
+  margin: 0;
+}
+
+/* WORK ON THIS VVV (get links on right side of navbar) */
+.navbarLinks {
+  /* text-align: right; */
+  justify-content: left;
 }
 
 .navbarTitle {
   padding: 0 5px 0 0;
-  color: rgba(100, 100, 50);
+  /* color: var(--off-white); */
+  /* font-weight: bolder; */
 }
 
 .navbarTitle:hover {
-  color: black;
+  color: var(--off-white);
+  cursor: default;
 }
 
 .navbarLink {
   padding: 0 10px 0 10px;
   text-decoration: none;
-  border-color: rgb(200, 200, 200);
+  border-color: var(--main-color);
   border-width: 0 1px 0 1px;
   border-style: solid;
-  color: rgb(200, 100, 100);
+  color: var(--main-color);
 }
 
 .navbarLinkLeft {
@@ -46,17 +79,52 @@
 }
 
 .navbarLink:visited {
-  color: rgb(200, 100, 100);
+  color: var(--main-color);
 }
 
 .navbarLink:hover {
-  color: black;
+  color: var(--off-white);
 }
 
 .article {
-  color:rgba(150, 150, 100);
+  color: var(--secondary-color);
 }
 
 .article:hover {
-  color: black;
+  color: var(--main-color);
+}
+
+.article h3 {
+  font-size: 36px;
+  font-weight: lighter;
+  margin-bottom: 0px;
+}
+
+.lowContrastHeader {
+  color: var(--secondary-color);
+  font-weight: lighter;
+}
+
+.lowContrastHeader:hover {
+  color: var(--main-color);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px; 
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--terciary-color); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--main-color); 
 }
