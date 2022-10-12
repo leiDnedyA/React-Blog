@@ -13,6 +13,13 @@ initializeApp({
 
 const db = getFirestore();
 
+const sampleArticle = {
+    title: 'Sample article',
+    author: 'Ayden',
+    date: Date.now(),
+    body: 'Test body. This is a test body. I am too lazy to copy a lorem ipsum into this string.'
+}
+
 db.collection('posts').get().then(res=>{
     let responseArr = [];
     res.forEach(doc => {
@@ -20,8 +27,6 @@ db.collection('posts').get().then(res=>{
     })
     console.log(responseArr);
 })
-
-
 
 const PORT = process.env.PORT || 3001;
 const app = express();
