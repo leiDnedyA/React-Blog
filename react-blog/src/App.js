@@ -13,19 +13,16 @@ const names = ['Ayden', 'John', 'Jack', 'Kendrick', 'Kanye', 'Kodak', 'Kobe']
 
 const randomInt = (min, max) => {
   let n = Math.floor((Math.random() * (max - min)) + min);
-  console.log(n)
   return n
 }
 
 fetch('/api')
-  .then(resp => {
-    console.log(resp);
-    console.log('======success=======');
-  })
+  .then(res => res.json())
   .catch(err => {
     console.log('======failure=======');
     console.log(err);
-  });
+  })
+  .then(json => {console.log(json)})
 
 for (let i = 0; i < 10; i++) {
   sampleArticles.push({
