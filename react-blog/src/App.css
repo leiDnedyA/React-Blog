@@ -52,12 +52,12 @@ body {
 
 .navbarTitle {
   padding: 0 5px 0 0;
-  /* color: var(--off-white); */
+  color: var(--off-white);
   /* font-weight: bolder; */
 }
 
 .navbarTitle:hover {
-  color: var(--off-white);
+  color: var(--main-color);
   cursor: default;
 }
 
