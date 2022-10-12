@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import CreatePost from './pages/CreatePost';
 import Login from './pages/Login';
@@ -11,15 +11,25 @@ const sampleArticles = []
 
 const names = ['Ayden', 'John', 'Jack', 'Kendrick', 'Kanye', 'Kodak', 'Kobe']
 
-const randomInt = (min, max)=>{
+const randomInt = (min, max) => {
   let n = Math.floor((Math.random() * (max - min)) + min);
   console.log(n)
   return n
 }
 
-for(let i = 0; i < 10; i++){
+fetch('/api')
+  .then(resp => {
+    console.log(resp);
+    console.log('======success=======');
+  })
+  .catch(err => {
+    console.log('======failure=======');
+    console.log(err);
+  });
+
+for (let i = 0; i < 10; i++) {
   sampleArticles.push({
-    title: `Sample article number ${i+1}`,
+    title: `Sample article number ${i + 1}`,
     body: sampleArticleBody.slice(0, randomInt(0, sampleArticleBody.length)),
     author: names[randomInt(0, names.length)],
   })
@@ -33,15 +43,15 @@ function App() {
         <Navbar
           links={
             [
-              {label: 'Home', address: '/'},
-              {label: 'Create Post', address: '/createpost'},
-              {label: 'Login', address: '/login'}
+              { label: 'Home', address: '/' },
+              { label: 'Create Post', address: '/createpost' },
+              { label: 'Login', address: '/login' }
             ]}
           title="Ayden's React Blog"
-          />
+        />
         <div className="body">
           <Routes>
-            <Route path="/" element={<Home articles={sampleArticles}/>} />
+            <Route path="/" element={<Home articles={sampleArticles} />} />
             <Route path="/createpost" element={<CreatePost />} />
             <Route path="/login" element={<Login />} />
           </Routes>

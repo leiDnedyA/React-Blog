@@ -8,5 +8,6 @@ app.listen(PORT, () => {
 });
 
 app.get("/api", (req, res) => {
+    console.log('server pinged?!')
     res.json({ message: "Hello from server!" });
 });
