@@ -1,19 +1,27 @@
-const { initializeApp } = require('firebase/app');
-const { getFirestore, collection, getDocs } = require('firebase/firestore/lite');
+
 const express = require("express");
 require('dotenv').config();
 
-const firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: "ayden-s-tech-blog.firebaseapp.com",
-    projectId: "ayden-s-tech-blog",
-    storageBucket: "ayden-s-tech-blog.appspot.com",
-    messagingSenderId: "982619150754",
-    appId: "1:982619150754:web:d8f4f78b5ebb4862cb7afb"
-};
+const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
+const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 
-const firebaseApp = initializeApp(firebaseConfig)
-const db = getFirestore(firebaseApp);
+const serviceAccount = require('../ayden-s-tech-blog-firebase-adminsdk-7sbwz-b082735b48.json');
+
+initializeApp({
+    credential: cert(serviceAccount)
+});
+
+const db = getFirestore();
+
+db.collection('posts').get().then(res=>{
+    let responseArr = [];
+    res.forEach(doc => {
+        responseArr.push(doc.data());
+    })
+    console.log(responseArr);
+})
+
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -25,3 +33,4 @@ app.listen(PORT, () => {
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
 });
+
