@@ -13,14 +13,26 @@ initializeApp({
 
 const db = getFirestore();
 
-const sampleArticle = {
-    title: 'Sample article',
-    author: 'Ayden',
+
+//generating sample articles to test article requesting from frontend
+const sampleArticle = (n) => ({
+    title: `Sample article number ${n}`,
+    id: Math.random(),
+    author: ['A', 'B', 'C', 'D'][Math.floor(Math.random() * 4)],
     date: Date.now(),
     body: 'Test body. This is a test body. I am too lazy to copy a lorem ipsum into this string.'
+})
+const sampleArticles = [];
+
+for (let i = 0; i < 5; i++) {
+    let a = sampleArticle(i);
+
+    sampleArticles[a.id] = a;
 }
 
-db.collection('posts').get().then(res=>{
+console.log(sampleArticles)
+
+db.collection('posts').get().then(res => {
     let responseArr = [];
     res.forEach(doc => {
         responseArr.push(doc.data());
@@ -31,11 +43,17 @@ db.collection('posts').get().then(res=>{
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+const RECENT_ARTICLE_COUNT = 5;
+
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
 
 app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
+    res.json({ recentArticles : sampleArticle});
+});
+
+app.get("/api/article", (req, res) => {
+
 });
 
