@@ -32,6 +32,9 @@ for (let i = 0; i < 10; i++) {
   })
 }
 
+function getHomepageArticles(){
+  return sampleArticles;
+}
 
 function App() {
   return (
@@ -48,7 +51,7 @@ function App() {
         />
         <div className="body">
           <Routes>
-            <Route path="/" element={<Home articles={sampleArticles} />} />
+            <Route path="/" element={<Home articles={getHomepageArticles()} />} />
             <Route path="/createpost" element={<CreatePost />} />
             <Route path="/login" element={<Login />} />
           </Routes>
