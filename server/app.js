@@ -32,14 +32,6 @@ for (let i = 0; i < 5; i++) {
 
 console.log(sampleArticles)
 
-db.collection('posts').get().then(res => {
-    let responseArr = [];
-    res.forEach(doc => {
-        responseArr.push(doc.data());
-    })
-    console.log(responseArr);
-})
-
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -50,7 +42,14 @@ app.listen(PORT, () => {
 });
 
 app.get("/api", (req, res) => {
-    res.json({ recentArticles : sampleArticle});
+    db.collection('posts').get().then(res2 => {
+        let responseArr = [];
+        res2.forEach(doc => {
+            responseArr.push(doc.data());
+        })
+        console.log(responseArr);
+        res.json({ recentArticles : responseArr })
+    })
 });
 
 app.get("/api/article", (req, res) => {
