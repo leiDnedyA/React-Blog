@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import CreatePost from './pages/CreatePost';
 import Login from './pages/Login';
@@ -37,7 +37,6 @@ function App() {
   } else {
     return (
       <div className="app">
-        <Router>
           <AuthProvider>
             <Navbar
               links={
@@ -56,7 +55,6 @@ function App() {
               </Routes>
             </div>
           </AuthProvider>
-        </Router>
       </div>
     );
   }
