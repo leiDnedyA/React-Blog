@@ -11,6 +11,7 @@
 
 body {
   margin: 0;
+  margin-top: 60px;
   background-color: var(--terciary-color);
   color: var(--off-white);
 }
@@ -27,7 +28,6 @@ body {
 }
 
 .home {
-  margin-top: 60px;
   padding: 5px 20% 5px 20%;
 }
 
