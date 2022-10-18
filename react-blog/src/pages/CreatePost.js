@@ -11,7 +11,7 @@ function CreatePost() {
         e.preventDefault();
         console.log(titleRef.current.value);
         console.log(bodyRef.current.value);
-        
+
         //sends a POST request to the proxy server API containing the article data and login token
         let xhr = new XMLHttpRequest();
         xhr.open("POST", "api/createArticle");
@@ -20,13 +20,19 @@ function CreatePost() {
             /** POST request complete */
         };
 
-        xhr.send(
-            JSON.stringify({
-                authToken : '',
-                title: titleRef.current.value,
-                body: bodyRef.current.value
-            })
-        )
+        currentUser.getIdToken(true)
+            .then((idToken) => {
+
+                xhr.send(
+                    JSON.stringify({
+                        authToken: idToken,
+                        title: titleRef.current.value,
+                        body: bodyRef.current.value
+                    })
+                )
+            }).catch(function (error) {
+                console.log("ERROR: token not recieved")
+            });
 
 
     }
