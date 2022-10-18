@@ -1,7 +1,11 @@
-
 const express = require("express");
+const bodyParser = require("body-parser");
 require('dotenv').config();
 
+//setting up bodyParser stuff VVV
+const jsonParser = bodyParser.json()
+
+//setting up firebase stuff VVV
 const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 
@@ -14,24 +18,7 @@ initializeApp({
 const db = getFirestore();
 
 
-//generating sample articles to test article requesting from frontend
-// const sampleArticle = (n) => ({
-//     title: `Sample article number ${n}`,
-//     id: Math.random(),
-//     author: ['A', 'B', 'C', 'D'][Math.floor(Math.random() * 4)],
-//     date: Date.now(),
-//     body: 'Test body. This is a test body. I am too lazy to copy a lorem ipsum into this string.'
-// })
-// const sampleArticles = [];
-
-// for (let i = 0; i < 5; i++) {
-//     let a = sampleArticle(i);
-
-//     sampleArticles[a.id] = a;
-// }
-
-// console.log(sampleArticles)
-
+//setting up express stuff VVV
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -51,6 +38,11 @@ app.get("/api", (req, res) => {
         res.json({ recentArticles: responseArr })
     })
 });
+
+app.post("/api/createArticle", jsonParser, (req, res)=>{
+    console.log(req.body);
+    res.send('POST request sent to createArticle')
+})
 
 app.get("/api/recent/:count", (req, res) => {
     // console.log(req.params.count);

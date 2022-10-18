@@ -10,7 +10,25 @@ function CreatePost() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(titleRef.current.value);
-        console.log(bodyRef.current.value)
+        console.log(bodyRef.current.value);
+        
+        //sends a POST request to the proxy server API containing the article data and login token
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "api/createArticle");
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.onload = () => {
+            /** POST request complete */
+        };
+
+        xhr.send(
+            JSON.stringify({
+                authToken : '',
+                title: titleRef.current.value,
+                body: bodyRef.current.value
+            })
+        )
+
+
     }
 
     const getUserEmail = _ => (currentUser !== null ? currentUser.email : 'Undefined');
