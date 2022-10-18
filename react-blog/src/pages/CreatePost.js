@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { createRef } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 
 function CreatePost() {
+
+    const { currentUser } = useAuth();
+    const titleRef = createRef();
+    const bodyRef = createRef();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(titleRef.current.value);
+        console.log(bodyRef.current.value)
+    }
+
+    const getUserEmail = _ => (currentUser !== null ? currentUser.email : 'Undefined');
+
     return (<div>
-        <p>placeholder</p>
-        <button onClick={() => {
-            fetch('/api').then(result => {
-                document.querySelector('#testText').innerHTML = JSON.stringify(result.json());
-                console.log(result)
-            })
-        }}>Test button</button>
-        <p id="testText">test</p>
+        <h1>Create Post</h1>
+        <p>Current user: {getUserEmail()}</p>
+
+        <p><input type="text" placeholder="title" ref={titleRef}></input></p>
+        <p><textarea placeholder="body..." ref={bodyRef}></textarea></p>
+        <button onClick={handleSubmit}>Submit</button>
     </div>)
 }
 

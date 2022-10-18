@@ -53,7 +53,7 @@ app.get("/api", (req, res) => {
 });
 
 app.get("/api/recent/:count", (req, res) => {
-    console.log(req.params.count);
+    // console.log(req.params.count);
     db.collection('posts').get().then(res2 => {
         let responseArr = [];
         res2.forEach(doc => {
