@@ -39,7 +39,7 @@ function CreatePost() {
 
     const getUserEmail = _ => (currentUser !== null ? currentUser.email : 'Undefined');
 
-    return (<div>
+    return (<div className="createPostBody">
         <h1>Create Post</h1>
         <p>Current user: {getUserEmail()}</p>
 

@@ -109,6 +109,10 @@ body {
   color: var(--main-color);
 }
 
+.createPostBody {
+  text-align: center;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px; 
