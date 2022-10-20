@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import CreatePost from './pages/CreatePost';
 import Login from './pages/Login';
 import Navbar from './elements/Navbar';
-import { getAllArticles, getRecentArticles, getArticle } from './services/ArticleService';
+import { /* getAllArticles, */ getRecentArticles /* , getArticle */} from './services/ArticleService';
 import { useEffect, useState } from 'react';
 import { useAuth } from './contexts/AuthContext';
 import ProtectedRoute from './routes/ProtectedRoute';
@@ -14,10 +14,10 @@ import Logout from './pages/Logout';
 
 const HOMEPAGE_ARTICLE_COUNT = 10;
 
-const randomInt = (min, max) => {
-  let n = Math.floor((Math.random() * (max - min)) + min);
-  return n
-}
+// const randomInt = (min, max) => {
+//   let n = Math.floor((Math.random() * (max - min)) + min);
+//   return n
+// }
 
 function App() {
 
@@ -35,37 +35,38 @@ function App() {
   }, [])
 
   if (error) {
+    setError(error)
     return <div> Error... </div>
   } else if (!isLoaded) {
     return <div> Loading... </div>
   } else {
     return (
       <div className="app">
-            <Navbar
-              links={
-                [
-                  { label: 'Home', address: '/' },
-                  { label: 'Create Post', address: '/createpost' },
-                  { label: 'Login', address: '/login' },
-                  { label: 'Logout', address: '/logout'}
-                ]}
-              title="Ayden's React Blog"
-            />
-            <div className="body">
-              <Routes>
-                <Route path="/" element={<Home articles={articles} />} />
-                <Route path="/createpost" element={
-                  <ProtectedRoute user={auth.currentUser}>
-                    <CreatePost/>
-                  </ProtectedRoute>
-                } />
-                <Route path="/login" element={<Login />} />
-                <Route path="/logout" element={<Logout/>}/>
-              </Routes>
-            </div>
-            <div className='footer'>
-              <p>Sample footer</p>
-            </div>
+        <Navbar
+          links={
+            [
+              { label: 'Home', address: '/' },
+              { label: 'Create Post', address: '/createpost' },
+              { label: 'Login', address: '/login' },
+              { label: 'Logout', address: '/logout' }
+            ]}
+          title="Ayden's React Blog"
+        />
+        <div className="body">
+          <Routes>
+            <Route path="/" element={<Home articles={articles} />} />
+            <Route path="/createpost" element={
+              <ProtectedRoute user={auth.currentUser}>
+                <CreatePost />
+              </ProtectedRoute>
+            } />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+          </Routes>
+        </div>
+        <div className='footer'>
+          <p>Sample footer</p>
+        </div>
       </div>
     );
   }
