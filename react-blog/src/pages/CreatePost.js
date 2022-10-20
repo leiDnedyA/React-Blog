@@ -40,11 +40,11 @@ function CreatePost() {
     const getUserEmail = _ => (currentUser !== null ? currentUser.email : 'Undefined');
 
     return (<div className="createPostBody">
-        <h1>Create Post</h1>
+        <h1 className="createPostHeader">Create Post</h1>
         <p>Current user: {getUserEmail()}</p>
 
-        <p><input type="text" placeholder="title" ref={titleRef}></input></p>
-        <p><textarea placeholder="body..." ref={bodyRef}></textarea></p>
+        <p><input className="createPostTitle" type="text" placeholder="title" ref={titleRef}></input></p>
+        <p><textarea placeholder="body..." ref={bodyRef} className="createPostTextField"></textarea></p>
         <button onClick={handleSubmit}>Submit</button>
     </div>)
 }

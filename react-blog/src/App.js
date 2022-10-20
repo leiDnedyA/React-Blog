@@ -63,6 +63,9 @@ function App() {
                 <Route path="/logout" element={<Logout/>}/>
               </Routes>
             </div>
+            <div className='footer'>
+              <p>Sample footer</p>
+            </div>
       </div>
     );
   }
