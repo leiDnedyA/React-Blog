@@ -1,4 +1,7 @@
 const express = require("express");
+const fs = require('fs');
+const https = require('https');
+const path = require('path');
 const bodyParser = require("body-parser");
 require('dotenv').config();
 
@@ -26,15 +29,28 @@ initializeApp({
 
 const db = getFirestore();
 
-//setting up express stuff VVV
+//setting up express and https stuff VVV
+
+const httpsOptions = {
+    cert: fs.readFileSync(path.join(__dirname, 'ssl', 'server.crt')),
+    key: fs.readFileSync(path.join(__dirname, 'ssl', 'server.key'))
+}
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 const RECENT_ARTICLE_COUNT = 5;
 
-app.listen(PORT, () => {
-    console.log(`Server listening on ${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server listening on ${PORT}`);
+// });
+
+https.createServer(httpsOptions, app)
+    .listen(PORT, ()=>{
+        
+        console.log(`Server now running on port ${PORT}`);
+
+    })
 
 app.get("/api", (req, res) => {
     db.collection('posts').get().then(res2 => {
