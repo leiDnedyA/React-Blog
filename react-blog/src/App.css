@@ -31,6 +31,7 @@ body {
   margin-top: 60px;
   margin-bottom: 60px;
   color: var(--secondary-color);
+  font-size: 80%;
   text-align: center;
 }
 

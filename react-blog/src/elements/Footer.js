@@ -1,6 +1,6 @@
 
-export const Footer = () => (
+export const Footer = ({ children }) => (
     <div className='footer'>
-        <p>Sample footer</p>
+        <p>{children}</p>
     </div>
 );
