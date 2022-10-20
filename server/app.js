@@ -19,7 +19,7 @@ const ADMIN_EMAILS = {
 //setting up firebase stuff VVV
 const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 const { getAuth } = require('firebase-admin/auth');
-const { getFirestore, Timestamp, FieldValue} = require('firebase-admin/firestore');
+const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 
 const serviceAccount = require('../ayden-s-tech-blog-firebase-adminsdk-7sbwz-b082735b48.json');
 
@@ -46,8 +46,8 @@ const RECENT_ARTICLE_COUNT = 5;
 // });
 
 https.createServer(httpsOptions, app)
-    .listen(PORT, ()=>{
-        
+    .listen(PORT, () => {
+
         console.log(`Server now running on port ${PORT}`);
 
     })
@@ -90,18 +90,33 @@ app.post("/api/createArticle", jsonParser, (req, res) => {
 });
 
 app.get("/api/recent/:count", (req, res) => {
-    // console.log(req.params.count);
-    db.collection('posts').get().then(res2 => {
-        let responseArr = [];
-        res2.forEach(doc => {
-            responseArr.push(doc.data());
+
+    let articleCount = parseInt(req.params.count);
+
+    db.collection('posts').orderBy('date').limitToLast(articleCount).get()
+        .then(res2 => {
+            let responseArr = [];
+            res2.forEach(doc => {
+                responseArr.push(doc.data());
+            })
+            // console.log(responseArr);
+            res.json({ recentArticles: reverseList(responseArr) })
         })
-        // console.log(responseArr);
-        res.json({ recentArticles: responseArr })
-    })
 });
 
 app.get("/api/article", (req, res) => {
 
 });
 
+//helper functions
+
+function reverseList(lst){
+    let newList = []
+
+    for(let i = lst.length; i--; i >= 0){
+        newList.push(lst[i])
+    }
+
+    return newList
+
+}

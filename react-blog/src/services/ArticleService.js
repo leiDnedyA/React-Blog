@@ -9,7 +9,7 @@ export async function getAllArticles() {
  * @param {number} count Number of articles to get
  * @return {Promise} array of articles
  */
-export async function getRecentArticles(count = 5) {
+export async function getRecentArticles(count = 2) {
 
     let response = new Promise((res, rej) => {
         fetch(`/api/recent/${count}`)
