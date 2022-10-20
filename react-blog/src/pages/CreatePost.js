@@ -32,7 +32,11 @@ function CreatePost() {
                 )
             }).catch(function (error) {
                 console.log("ERROR: token not recieved")
-            });
+            })
+            .then(_ => {
+                titleRef.current.value = '';
+                bodyRef.current.value = '';
+            })
 
 
     }
