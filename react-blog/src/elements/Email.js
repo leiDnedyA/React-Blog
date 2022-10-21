@@ -1,2 +1,2 @@
 
-export const Email = ( { children }) => (<a href={`mailto: ${ children }`}>children</a>)
+export const Email = ( { children }) => (<a href={`mailto: ${ children }`}>{children}</a>)

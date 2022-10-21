@@ -1,5 +1,8 @@
 import React, { createRef } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import config from '../config.json'
+
+console.log(config)
 
 function CreatePost() {
 
@@ -14,7 +17,7 @@ function CreatePost() {
 
         //sends a POST request to the proxy server API containing the article data and login token
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", "api/createArticle");
+        xhr.open("POST", `${config.api}/createArticle`);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhr.onload = () => {
             /** POST request complete */
