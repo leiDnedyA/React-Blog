@@ -120,15 +120,14 @@ body {
 .createPostBody {
   text-align: center;
   color: var(--main-color);
-  width: 40%;
 }
 
-.createPostTitle {
+.standardInput {
   width: 100%;
   background-color: var(--terciary-color);
   color: var(--main-color);
   border: 1px solid var(--main-color);
-}
+} 
 
 .createPostTextField {
   width: 100%;
@@ -156,8 +155,20 @@ body {
 }
 
 .standardButton {
-  background-color: var(--main-color);
+  background-color: var(--terciary-color);
+  color: var(--main-color);
   padding: 5px;
+  border-radius: 5px;
+}
+
+.standardButton:hover {
+  color: var(--accent-color);
+  cursor: pointer;
+}
+
+.standardButton:active {
+  background-color: var(--accent-color);
+  color: var(--terciary-color)
 }
 
 ::placeholder {
