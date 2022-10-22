@@ -33,9 +33,9 @@ function Login() {
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
                     <label className="blockInput userFormLabel">Email</label>
-                    <input type="text" placeholder='email' ref={emailRef} />
+                    <input type="text" placeholder='email' className="standardInput" ref={emailRef} />
                     <label className="blockInput userFormLabel">Password</label>
-                    <input type="password" placeholder='password' ref={passwordRef} />
+                    <input type="password" placeholder='password'  className="standardInput" ref={passwordRef} />
                     <input type="submit" className="blockInput standardButton"/>
                 </form>
                 <p>Don't have an account? <Link to="/signup">sign up</Link>.</p>
