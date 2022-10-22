@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Card } from '../elements/Card';
 
 function Login() {
     const emailRef = useRef();
@@ -27,18 +28,19 @@ function Login() {
     }
 
     return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Email: 
-                    <input type="text" placeholder='email' ref={emailRef}/>
-                </label>
-                <label>Password: 
-                    <input type="password" placeholder='password' ref={passwordRef}/>
-                </label>
-                <input type="submit"/>
-            </form>
-        </div>
+        <Card>
+            <div className="userFormContainer">
+                <h2>Login</h2>
+                <form onSubmit={handleSubmit}>
+                    <label className="blockInput userFormLabel">Email</label>
+                    <input type="text" placeholder='email' ref={emailRef} />
+                    <label className="blockInput userFormLabel">Password</label>
+                    <input type="password" placeholder='password' ref={passwordRef} />
+                    <input type="submit" className="blockInput standardButton"/>
+                </form>
+                <p>Don't have an account? <Link to="/signup">sign up</Link>.</p>
+            </div>
+        </Card>
     )
 }
 

@@ -137,6 +137,29 @@ body {
   color: var(--main-color);
 }
 
+.card {
+
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+  padding: 20px;
+  color: var(--main-color)
+
+}
+
+.userFormLabel {
+  font-size: small;
+}
+
+.blockInput {
+  display: block;
+  margin-top: 5px;
+}
+
+.standardButton {
+  background-color: var(--main-color);
+  padding: 5px;
+}
+
 ::placeholder {
   color: var(--secondary-color);
 }
