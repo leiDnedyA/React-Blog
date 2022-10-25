@@ -23,9 +23,9 @@ const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestor
 
 const serviceAccount = require('../ayden-s-tech-blog-firebase-adminsdk-7sbwz-b082735b48.json');
 
-// initializeApp({
-//     credential: cert(serviceAccount)
-// });
+initializeApp({
+    credential: cert(serviceAccount)
+});
 
 const db = getFirestore();
 
@@ -41,16 +41,16 @@ const app = express();
 
 const RECENT_ARTICLE_COUNT = 5;
 
-// app.listen(PORT, () => {
-//     console.log(`Server listening on ${PORT}`);
-// });
+app.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
+});
 
-https.createServer(httpsOptions, app)
-    .listen(PORT, () => {
+// https.createServer(httpsOptions, app)
+//     .listen(PORT, () => {
 
-        console.log(`Server now running on port ${PORT}`);
+//         console.log(`Server now running on port ${PORT}`);
 
-    })
+//     })
 
 app.get("/api", (req, res) => {
     db.collection('posts').get().then(res2 => {
