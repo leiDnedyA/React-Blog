@@ -1,5 +1,6 @@
 const express = require("express");
 const fs = require('fs');
+const path = require('path')
 require('dotenv').config()
 
 // const https = require('https');
@@ -46,6 +47,13 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 const RECENT_ARTICLE_COUNT = 5;
+
+if (process.env.PROD) {
+    app.use(express.static(path.join(__dirname, './react-blog/build')));
+    app.get('*', (req, res) => { 
+        res.sendFile(path.join(__dirname, './react-blog/build/index.html'));
+    })
+}
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
@@ -116,10 +124,10 @@ app.get("/api/article", (req, res) => {
 
 //helper functions
 
-function reverseList(lst){
+function reverseList(lst) {
     let newList = []
 
-    for(let i = lst.length; i--; i >= 0){
+    for (let i = lst.length; i--; i >= 0) {
         newList.push(lst[i])
     }
 
