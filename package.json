@@ -5,7 +5,7 @@
   "main": "server/app.js",
   "scripts": {
     "start": "PROD=true node server/app.js",
-    "postinstall": "cd ./react-blog && npm start",
+    "postinstall": "cd ./react-blog && npm i",
     "test": "nodemon server/app.js"
   },
   "repository": {
