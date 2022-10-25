@@ -1,5 +1,7 @@
 const express = require("express");
 const fs = require('fs');
+require('dotenv').config()
+
 // const https = require('https');
 // const path = require('path');
 const bodyParser = require("body-parser");
@@ -22,6 +24,10 @@ const { getAuth } = require('firebase-admin/auth');
 const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 
 const serviceAccount = require('../ayden-s-tech-blog-firebase-adminsdk-7sbwz-b082735b48.json');
+
+serviceAccount.private_key = process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n')
+
+console.log(serviceAccount)
 
 initializeApp({
     credential: cert(serviceAccount)

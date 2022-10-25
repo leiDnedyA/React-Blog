@@ -4,7 +4,8 @@
   "description": "",
   "main": "server/app.js",
   "scripts": {
-    "start": "node server/app.js",
+    "start": "PROD=true node server/app.js",
+    "postinstall": "cd ./react-blog && npm",
     "test": "nodemon server/app.js"
   },
   "repository": {
