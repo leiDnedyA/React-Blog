@@ -1,6 +1,8 @@
 const express = require("express");
 const fs = require('fs');
 const path = require('path')
+const clc = require('cli-color')
+
 require('dotenv').config()
 
 // const https = require('https');
@@ -56,7 +58,7 @@ if (process.env.PROD) {
 }
 
 app.listen(PORT, () => {
-    console.log(`Server listening on ${PORT}`);
+    console.log(`${clc.greenBright('Server')} listening on PORT: ${clc.black(clc.bgGreenBright(PORT))}`);
 });
 
 app.get("/api", (req, res) => {
@@ -74,12 +76,16 @@ app.post("/api/createArticle", jsonParser, (req, res) => {
         .verifyIdToken(req.body.authToken)
         .then((decodedToken) => {
             if (Object.keys(ADMIN_EMAILS).includes(decodedToken.email)) {
+                let authorName = ADMIN_EMAILS[decodedToken.email].name;
+                console.log(`${clc.blueBright('NEW ARTICLE CREATED')} by author ${clc.blueBright(authorName)}`);
                 return db.collection('posts').add({
-                    author: ADMIN_EMAILS[decodedToken.email].name,
+                    author: authorName,
                     body: req.body.body,
                     title: req.body.title,
                     date: Timestamp.now()
                 })
+            } else {
+                console.log(`${clc.yellow('WARNING')}: user with email '${clc.blueBright(decodedToken.email)}' tried uploading an article without the proper permission...`);
             }
         })
 
@@ -87,8 +93,6 @@ app.post("/api/createArticle", jsonParser, (req, res) => {
             console.log(error);
         })
         .then((result) => {
-            console.log(result)
-
             res.send('POST request sent to createArticle')
         })
 });
@@ -105,6 +109,7 @@ app.get("/api/recent/:count", (req, res) => {
                 data.id = doc.id;
                 responseArr.push(data);
             })
+            console.log(clc.blueBright('Client homepage request fulfilled...'));
             res.json({ recentArticles: reverseList(responseArr) })
         })
 });
