@@ -6,7 +6,8 @@
   "scripts": {
     "start": "PROD=true node server/app.js",
     "postinstall": "cd ./react-blog && npm i",
-    "test": "nodemon server/app.js"
+    "test": "nodemon server/app.js",
+    "static_test": "node server/app.js"
   },
   "repository": {
     "type": "git",

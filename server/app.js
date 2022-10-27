@@ -28,8 +28,6 @@ const serviceAccount = require('../ayden-s-tech-blog-firebase-adminsdk-7sbwz-b08
 
 serviceAccount.private_key = process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n')
 
-console.log(serviceAccount)
-
 initializeApp({
     credential: cert(serviceAccount)
 });
@@ -61,30 +59,20 @@ app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
 
-// https.createServer(httpsOptions, app)
-//     .listen(PORT, () => {
-
-//         console.log(`Server now running on port ${PORT}`);
-
-//     })
-
 app.get("/api", (req, res) => {
     db.collection('posts').get().then(res2 => {
         let responseArr = [];
         res2.forEach(doc => {
             responseArr.push(doc.data());
         })
-        // console.log(responseArr);
         res.json({ recentArticles: responseArr })
     })
 });
 
 app.post("/api/createArticle", jsonParser, (req, res) => {
-    console.log(req.body);
     getAuth()
         .verifyIdToken(req.body.authToken)
         .then((decodedToken) => {
-            console.log(decodedToken);
             if (Object.keys(ADMIN_EMAILS).includes(decodedToken.email)) {
                 return db.collection('posts').add({
                     author: ADMIN_EMAILS[decodedToken.email].name,
@@ -113,9 +101,10 @@ app.get("/api/recent/:count", (req, res) => {
         .then(res2 => {
             let responseArr = [];
             res2.forEach(doc => {
-                responseArr.push(doc.data());
+                let data = doc.data();
+                data.id = doc.id;
+                responseArr.push(data);
             })
-            // console.log(responseArr);
             res.json({ recentArticles: reverseList(responseArr) })
         })
 });

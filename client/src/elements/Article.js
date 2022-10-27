@@ -1,9 +1,20 @@
+import { useNavigate, useParams } from "react-router-dom"
 
-function Article(props) {
-    return <div className="article" onClick={_=>{alert('article click')}}>
+export function ArticleHeadline(props) {
+    const navigate = useNavigate();
+    return <div className="article" onClick={()=>{
+        console.log(props.id)
+        navigate(`/article/${props.id}`)
+    }}>
         <h3>{props.title}</h3>
         <p><cite className="authorName">{props.author}</cite>: {props.body}</p>
     </div>
 }
 
-export default Article;
+export function Article(props){
+    const {id} = useParams();
+
+    return <div>
+        {id}
+    </div>
+}

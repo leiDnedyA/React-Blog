@@ -1,5 +1,22 @@
 
-export async function getAllArticles() {
+
+export async function getArticleByID(id) {
+
+    let response = new Promise((res, rej) => {
+        fetch(`/api/getArticle/${id}`)
+            .then(res => res.json())
+            .catch(err => {
+                console.log('======failure=======');
+                console.log(err);
+                rej('Failure to communicate with proxy server...');
+            })
+            .then(json => {
+                res(json);
+            })
+
+    });
+
+    return response
 
 }
 
@@ -13,18 +30,18 @@ export async function getRecentArticles(count = 2) {
 
     let response = new Promise((res, rej) => {
         fetch(`/api/recent/${count}`)
-        .then(res => res.json())
-        .catch(err => {
-            console.log('======failure=======');
-            console.log(err);
-            rej('Failure to communicate with proxy server...');
-        })
-        .then(json => { 
-            res(json);
-         })
-    
+            .then(res => res.json())
+            .catch(err => {
+                console.log('======failure=======');
+                console.log(err);
+                rej('Failure to communicate with proxy server...');
+            })
+            .then(json => {
+                res(json);
+            })
+
     });
-    
+
     return response
 
 }

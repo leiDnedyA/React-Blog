@@ -1,13 +1,15 @@
 import React from 'react';
-import Article from '../elements/Article';
+import {ArticleHeadline} from '../elements/Article';
 
 function Home(props) {
     return (<div className="home">
         {props.articles.map(v => {
-            return (<Article 
+            console.log(v)
+            return (<ArticleHeadline 
                 title={v.title}
                 body={v.body}
                 author={v.author}
+                id={v.id}
                 />)
         })}
     </div>);
