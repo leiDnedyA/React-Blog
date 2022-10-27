@@ -1,5 +1,5 @@
 import React from 'react';
-import {ArticleHeadline} from '../elements/Article';
+import ArticleHeadline from '../elements/ArticleHeadline';
 
 function Home(props) {
     return (<div className="home">

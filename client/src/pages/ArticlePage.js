@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleByID } from '../services/ArticleService'
+import Article from '../elements/Article'
 
 function ArticlePage(props) {
     
@@ -13,6 +14,7 @@ function ArticlePage(props) {
             .then((res) => {
                 setIsLoaded(true);
                 setCurrentArticle(res);
+                console.log(res)
             })
     }, []);
 
@@ -21,7 +23,7 @@ function ArticlePage(props) {
     } else {
         return (
             <div>
-                <Article articleData={currentArticle}/>
+                <Article id={currentArticle.id} title={currentArticle.title} author={currentArticle.author}/>
             </div>
         )
     }

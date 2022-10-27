@@ -5,8 +5,6 @@ const clc = require('cli-color')
 
 require('dotenv').config()
 
-// const https = require('https');
-// const path = require('path');
 const bodyParser = require("body-parser");
 require('dotenv').config();
 
@@ -35,13 +33,6 @@ initializeApp({
 });
 
 const db = getFirestore();
-
-//setting up express and https stuff VVV
-
-// const httpsOptions = {
-//     cert: fs.readFileSync(path.join(__dirname, 'ssl', 'server.crt')),
-//     key: fs.readFileSync(path.join(__dirname, 'ssl', 'server.key'))
-// }
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -114,12 +105,19 @@ app.get("/api/recent/:count", (req, res) => {
         })
 });
 
-app.get("/api/article", (req, res) => {
+app.get("/api/article/:id", (req, res) => {
+    let articleID = req.params.id;
+
+    db.collection('posts').doc(articleID).get()
+        .then(res2 => {
+            let data = res2.data();
+            data.id = articleID;
+            res.json(data)
+        })
 
 });
 
 //helper functions
-
 function reverseList(lst) {
     let newList = []
 

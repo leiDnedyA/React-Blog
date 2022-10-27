@@ -2,8 +2,11 @@
 
 export async function getArticleByID(id) {
 
+    console.log('getARticleByID called')
+
     let response = new Promise((res, rej) => {
-        fetch(`/api/getArticle/${id}`)
+        console.log('getting article')
+        fetch(`/api/article/${id}`)
             .then(res => res.json())
             .catch(err => {
                 console.log('======failure=======');

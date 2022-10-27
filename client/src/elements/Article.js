@@ -1,18 +1,8 @@
-import { useNavigate } from "react-router-dom"
 
-export function ArticleHeadline(props) {
-    const navigate = useNavigate();
-    return <div className="article" onClick={()=>{
-        navigate(`/article/${props.id}`)
-    }}>
-        <h3>{props.title}</h3>
-        <p><cite className="authorName">{props.author}</cite>: {props.body}</p>
-    </div>
-}
-
-export function Article(props){
+export default function Article(props){
+    console.log(props.title)
     return <div>
-        {props.articleData}
+        {props.title}
     </div>
 
 }
