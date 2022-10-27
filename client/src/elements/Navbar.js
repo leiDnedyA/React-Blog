@@ -29,6 +29,7 @@ function Navbar(props) {
                         let link = <Link
                             className={classNames.join(' ')}
                             to={v.address}
+                            key={v.label}
                         >
                             {v.label}
                         </Link>;

@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom"
 export function ArticleHeadline(props) {
     const navigate = useNavigate();
     return <div className="article" onClick={()=>{
-        console.log(props.id)
         navigate(`/article/${props.id}`)
     }}>
         <h3>{props.title}</h3>
