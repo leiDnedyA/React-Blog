@@ -50,10 +50,10 @@ const RECENT_ARTICLE_COUNT = 5;
 
 if (process.env.PROD) {
 
-    app.use(express.static(path.join(__dirname, '../react-blog/build')));
+    app.use(express.static(path.join(__dirname, '../client/build')));
 
     app.get('/', function (req, res) {
-        res.sendFile(path.join(__dirname, '../react-blog/build', 'index.html'));
+        res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
     });
 }
 

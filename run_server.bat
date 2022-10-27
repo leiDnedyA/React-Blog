@@ -1,4 +1,4 @@
 
 echo "\n\nserver running...\n"
 
-npm start
+npm run test
