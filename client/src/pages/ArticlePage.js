@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { getArticleByID } from '../services/ArticleService'
 
 function ArticlePage(props) {
-
+    
+    const {id} = useParams();
     const [currentArticle, setCurrentArticle] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        getArticleByIDTest(props.articleID)
+        getArticleByID(id)
             .then((res) => {
                 setIsLoaded(true);
                 setCurrentArticle(res);
@@ -19,7 +21,7 @@ function ArticlePage(props) {
     } else {
         return (
             <div>
-                <p> {JSON.stringify(currentArticle)} </p>
+                <Article articleData={currentArticle}/>
             </div>
         )
     }

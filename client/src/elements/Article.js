@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom"
-import LoadingText from "./LoadingText";
+import { useNavigate } from "react-router-dom"
 
 export function ArticleHeadline(props) {
     const navigate = useNavigate();
@@ -13,20 +11,8 @@ export function ArticleHeadline(props) {
 }
 
 export function Article(props){
-    const {id} = useParams();
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [articleData, setArticleData] = useState(null);
-
-    useEffect(()=>{
-        
-    })
-
-    if(!isLoaded){
-        <LoadingText/>
-    }else{
-        return <div>
-            {articleData}
-        </div>
-    }
+    return <div>
+        {props.articleData}
+    </div>
 
 }
