@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 
 export default function ArticleHeadline(props) {
     const navigate = useNavigate();
-    return <div className="article" onClick={()=>{
+    return <div className="article headline" onClick={()=>{
         navigate(`/article/${props.id}`)
     }}>
         <h3>{props.title}</h3>

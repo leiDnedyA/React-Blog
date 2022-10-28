@@ -14,7 +14,6 @@ function ArticlePage(props) {
             .then((res) => {
                 setIsLoaded(true);
                 setCurrentArticle(res);
-                console.log(res)
             })
     }, []);
 
@@ -23,7 +22,7 @@ function ArticlePage(props) {
     } else {
         return (
             <div>
-                <Article id={currentArticle.id} title={currentArticle.title} author={currentArticle.author}/>
+                <Article id={currentArticle.id} title={currentArticle.title} body={currentArticle.body} author={currentArticle.author} date={currentArticle.date._seconds}/>
             </div>
         )
     }

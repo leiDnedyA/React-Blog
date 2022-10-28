@@ -95,10 +95,14 @@ body {
 }
 
 .article {
+  color: var(--main-color);
+}
+
+.article.headline {
   color: var(--secondary-color);
 }
 
-.article:hover {
+.article.headline:hover {
   color: var(--main-color);
 }
 
