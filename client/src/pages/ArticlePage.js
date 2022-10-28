@@ -21,9 +21,7 @@ function ArticlePage(props) {
         return <h2>Loading...</h2>
     } else {
         return (
-            <div>
-                <Article id={currentArticle.id} title={currentArticle.title} body={currentArticle.body} author={currentArticle.author} date={currentArticle.date._seconds}/>
-            </div>
+            <Article id={currentArticle.id} title={currentArticle.title} body={currentArticle.body} author={currentArticle.author} date={currentArticle.date._seconds}/>
         )
     }
 }
