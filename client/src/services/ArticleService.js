@@ -27,12 +27,13 @@ export async function getArticleByID(id) {
  * Fetches and returns a list of the (count) most recent articles
  * 
  * @param {number} count Number of articles to get
+ * @param {number} startIndex The starting index of the articles requested
  * @return {Promise} array of articles
  */
-export async function getRecentArticles(count = 2) {
+export async function getRecentArticles(count = 10, startIndex = 0) {
 
     let response = new Promise((res, rej) => {
-        fetch(`/api/recent/${count}`)
+        fetch(`/api/recent/${count}/${startIndex}`)
             .then(res => res.json())
             .catch(err => {
                 console.log('======failure=======');

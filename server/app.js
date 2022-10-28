@@ -88,20 +88,25 @@ app.post("/api/createArticle", jsonParser, (req, res) => {
         })
 });
 
-app.get("/api/recent/:count", (req, res) => {
+app.get("/api/recent/:count/:startIndex?", (req, res) => {
 
     let articleCount = parseInt(req.params.count);
+    let startIndex = parseInt(req.params.startIndex);
 
-    db.collection('posts').orderBy('date').limitToLast(articleCount).get()
+    db.collection('posts').orderBy('date').limitToLast(articleCount + startIndex).get()
         .then(res2 => {
             let responseArr = [];
-            res2.forEach(doc => {
+            let i = 0;
+            res2.forEach((doc) => {
                 let data = doc.data();
                 data.id = doc.id;
                 responseArr.push(data);
+                i++;
             })
+            responseArr = reverseList(responseArr);
+            responseArr = responseArr.slice(startIndex, articleCount + startIndex);
             console.log(clc.blueBright('Client homepage request fulfilled...'));
-            res.json({ recentArticles: reverseList(responseArr) })
+            res.json({ recentArticles: responseArr})
         })
 });
 
