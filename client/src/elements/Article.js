@@ -5,7 +5,7 @@
  * @param {int} seconds unix timestamp (seconds)
  * @return {string}
  */
-function secondsToDate(seconds){
+function secondsToDate(seconds) {
     const date = new Date(seconds * 1000);
     const day = date.getDate();
     const month = date.getMonth();
@@ -14,7 +14,7 @@ function secondsToDate(seconds){
     const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     let daySuffix = ''
-    switch(day){
+    switch (day) {
         case 1:
             daySuffix = 'st'
             break;
@@ -31,7 +31,7 @@ function secondsToDate(seconds){
 
     return `${MONTHS[month]} ${day}${daySuffix}, ${year}`;
 
-    
+
 }
 
 /**
@@ -45,11 +45,13 @@ function secondsToDate(seconds){
  *  date <Int> date in seconds
  * 
  */
-export default function Article(props){
-    return <div className="article">
-        <h3>{props.title}</h3>
-        <p>{secondsToDate(props.date)}</p>
-        <p><cite className="authorName">{props.author}</cite>: {props.body}</p>
+export default function Article(props) {
+    return <div className="articlePage">
+        <div className="article">
+            <h3>{props.title}</h3>
+            <p>{secondsToDate(props.date)}</p>
+            <p><cite className="authorName">{props.author}</cite>: {props.body}</p>
+        </div>
     </div>
 
 }
