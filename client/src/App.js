@@ -59,6 +59,7 @@ function App() {
             <Route path="/logout" element={<Logout />} />
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/article/:id" element={<ArticlePage/>}/>
+            <Route path="loading" element={<LoadingText/>}/>
           </Routes>
         </div>
         <Footer>

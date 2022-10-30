@@ -180,6 +180,10 @@ body {
   color: var(--terciary-color)
 }
 
+.loadingText {
+  color: var(--main-color)
+}
+
 ::placeholder {
   color: var(--secondary-color);
 }
