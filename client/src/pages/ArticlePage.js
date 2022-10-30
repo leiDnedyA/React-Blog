@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleByID } from '../services/ArticleService'
 import Article from '../elements/Article'
+import LoadingText from '../elements/LoadingText';
 
 function ArticlePage(props) {
     
@@ -18,7 +19,7 @@ function ArticlePage(props) {
     }, []);
 
     if (!isLoaded) {
-        return <h2>Loading...</h2>
+        return <LoadingText/>
     } else {
         return (
             <Article id={currentArticle.id} title={currentArticle.title} body={currentArticle.body} author={currentArticle.author} date={currentArticle.date._seconds}/>
