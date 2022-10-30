@@ -39,9 +39,8 @@ function Home() {
                         key={v.id}
                     />)
                 })}
-
-                <button className="standardButton" onClick={loadMoreArticles}>Load more...</button>
             </div>
+            <button className="lowkeyButton center" onClick={loadMoreArticles}>Load more...</button>
         </div>);
     }
 

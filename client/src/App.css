@@ -136,7 +136,7 @@ body {
   background-color: var(--terciary-color);
   color: var(--main-color);
   border: 1px solid var(--main-color);
-} 
+}
 
 .createPostTextField {
   width: 100%;
@@ -151,7 +151,6 @@ body {
   border-radius: 3px;
   padding: 20px;
   color: var(--main-color)
-
 }
 
 .userFormLabel {
@@ -184,26 +183,51 @@ body {
   color: var(--main-color)
 }
 
+.center {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+.lowkeyButton {
+  background-color: var(--terciary-color);
+  color: var(--main-color);
+  padding: 5px;
+  border: none;
+}
+
+.lowkeyButton:hover {
+  color: var(--accent-color);
+  cursor: pointer;
+}
+
+.lowkeyButton:active {
+  background-color: var(--accent-color);
+  color: var(--terciary-color)
+}
+
 ::placeholder {
   color: var(--secondary-color);
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px; 
+  width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--terciary-color); 
+  background: var(--terciary-color);
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--secondary-color); 
+  background: var(--secondary-color);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--main-color); 
+  background: var(--main-color);
 }
