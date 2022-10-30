@@ -26,7 +26,7 @@ function Home() {
     }
 
     if (!isLoaded) {
-        return <LoadingText/>
+        return <LoadingText />
     } else {
         return (<div>
             <div className="home">
@@ -40,7 +40,9 @@ function Home() {
                     />)
                 })}
             </div>
-            <button className="lowkeyButton center" onClick={loadMoreArticles}>Load more...</button>
+            <div className="bigMarginTop">
+                <button className="lowkeyButton center" onClick={loadMoreArticles}>Load more...</button>
+            </div>
         </div>);
     }
 

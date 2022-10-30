@@ -192,7 +192,7 @@ body {
 }
 
 .lowkeyButton {
-  background-color: var(--terciary-color);
+  background-color: rgba(0, 0, 0, 0);
   color: var(--main-color);
   padding: 5px;
   border: none;
@@ -206,6 +206,10 @@ body {
 .lowkeyButton:active {
   background-color: var(--accent-color);
   color: var(--terciary-color)
+}
+
+.bigMarginTop {
+  margin-top: 30px;
 }
 
 ::placeholder {
