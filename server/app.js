@@ -100,9 +100,7 @@ app.get("/api/recent/:count/:startIndex?", (req, res) => {
             let responseArr = [];
             let i = 0;
             res2.forEach((doc) => {
-                let data = doc.data();
-                data.id = doc.id;
-                responseArr.push(data);
+                responseArr.push(reformatArticleDoc(doc.data(), doc.id));
                 i++;
             })
             responseArr = reverseList(responseArr);
@@ -117,12 +115,26 @@ app.get("/api/article/:id", (req, res) => {
 
     db.collection('posts').doc(articleID).get()
         .then(res2 => {
-            let data = res2.data();
-            data.id = articleID;
-            res.json(data)
+            res.json(reformatArticleDoc(res2.data(), articleID))
         })
 
 });
+
+/**
+ * Reformats data from Firestore into better format to send to client
+ * Features:
+ *  -adds id key to object
+ *  -"date" key is set to just the "_seconds" value of the timestamp
+ * 
+ * @param {object} data article data from request to Firestore
+ * @param {string} id id of article
+ * @returns {object} reformatted article object
+ */
+function reformatArticleDoc(data, id){
+    data.id = id;
+    data.date = data.date._seconds;
+    return data;
+}
 
 //helper functions
 function reverseList(lst) {

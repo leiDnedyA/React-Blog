@@ -212,6 +212,14 @@ body {
   margin-top: 30px;
 }
 
+.floatLeft {
+  float: left;
+}
+
+.floatRight {
+  float: right;
+}
+
 ::placeholder {
   color: var(--secondary-color);
 }

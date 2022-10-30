@@ -22,7 +22,7 @@ function ArticlePage(props) {
         return <LoadingText/>
     } else {
         return (
-            <Article id={currentArticle.id} title={currentArticle.title} body={currentArticle.body} author={currentArticle.author} date={currentArticle.date._seconds}/>
+            <Article id={currentArticle.id} title={currentArticle.title} body={currentArticle.body} author={currentArticle.author} date={currentArticle.date}/>
         )
     }
 }

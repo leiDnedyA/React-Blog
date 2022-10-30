@@ -31,12 +31,14 @@ function Home() {
         return (<div>
             <div className="home">
                 {articles.map(v => {
+                    console.log(v)
                     return (<ArticleHeadline
                         title={v.title}
                         body={v.body}
                         author={v.author}
                         id={v.id}
                         key={v.id}
+                        date={v.date}
                     />)
                 })}
             </div>
