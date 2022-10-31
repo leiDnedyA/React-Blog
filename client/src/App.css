@@ -22,9 +22,9 @@ body {
 
 .body {
   display: flex;
-  margin: 5px;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  justify-content: left;
+  width: 100%;
 }
 
 .footer {
@@ -36,7 +36,8 @@ body {
 }
 
 .home {
-  padding: 5px 20% 5px 20%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .navbar {
@@ -54,7 +55,6 @@ body {
 
 /* WORK ON THIS VVV (get links on right side of navbar) */
 .navbarLinks {
-  /* text-align: right; */
   justify-content: left;
 }
 
@@ -146,11 +146,11 @@ body {
 }
 
 .card {
-
   border: 1px solid var(--main-color);
   border-radius: 3px;
   padding: 20px;
-  color: var(--main-color)
+  width: 80%;
+  color: var(--main-color);
 }
 
 .userFormLabel {
@@ -218,6 +218,15 @@ body {
 
 .floatRight {
   float: right;
+}
+
+.ellipsisOverflow {
+  white-space: nowrap;
+  line-height: 1.5em;
+  height: 1.5em;
+  width: 600px; /* TEMPORARY SOLUTION */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 ::placeholder {

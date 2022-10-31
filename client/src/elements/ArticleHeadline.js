@@ -7,7 +7,8 @@ export default function ArticleHeadline(props) {
         navigate(`/article/${props.id}`)
     }}>
         <h3>{props.title}</h3>
-        <p><cite className="authorName">{props.author}</cite>: {props.body}</p>
+        <p><cite className="authorName">{props.author}</cite>: </p>
+        <div className="ellipsisOverflow">{props.body}</div>
         <p>{secondsToDate(props.date)}</p>
     </div>
 }

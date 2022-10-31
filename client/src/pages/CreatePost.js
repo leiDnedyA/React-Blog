@@ -45,8 +45,9 @@ function CreatePost() {
 
     const getUserEmail = _ => (currentUser !== null ? currentUser.email : 'Undefined');
 
-    return (<Card className="createPostBody">
-        <div >
+    return (
+        <Card className="createPostBody">
+        <div>
             <h1 className="createPostHeader">Create Post</h1>
             <p>Current user: {getUserEmail()}</p>
 
