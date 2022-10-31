@@ -28,8 +28,6 @@ const serviceAccount = require('../firebase_credentials.json');
 
 serviceAccount.private_key = process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n')
 
-console.log(serviceAccount)
-
 initializeApp({
     credential: cert(serviceAccount)
 });
