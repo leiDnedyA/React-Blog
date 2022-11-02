@@ -29,9 +29,8 @@ function Home() {
         return <LoadingText />
     } else {
         return (<div>
-            <div className="home">
+            <div className="home home-flex-container">
                 {articles.map(v => {
-                    console.log(v)
                     return (<ArticleHeadline
                         title={v.title}
                         body={v.body}

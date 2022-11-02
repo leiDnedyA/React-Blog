@@ -3,12 +3,11 @@ import secondsToDate from '../misc/secondsToDate'
 
 export default function ArticleHeadline(props) {
     const navigate = useNavigate();
-    return <div className="article headline" onClick={() => {
+    return <article className="article headline" onClick={() => {
         navigate(`/article/${props.id}`)
     }}>
         <h3>{props.title}</h3>
-        <p><cite className="authorName">{props.author}</cite>: </p>
-        <div className="ellipsisOverflow">{props.body}</div>
+        <div className="ellipsisOverflow headlineBody"><cite className="authorName">{props.author}</cite>: {props.body}</div>
         <p>{secondsToDate(props.date)}</p>
-    </div>
+    </article>
 }

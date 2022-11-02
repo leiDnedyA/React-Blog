@@ -47,9 +47,9 @@ function App() {
             ]}
           title="Ayden's React Blog"
         />
-        <div className="body">
+        <div className="body" id="body">
           <Routes>
-            <Route path="/" element={<Home articles={articles} />} />
+            <Route className="route" path="/" element={<Home articles={articles} />} />
             <Route path="/createpost" element={
               <ProtectedRoute user={auth.currentUser}>
                 <CreatePost />
