@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import AboutSection from '../elements/AboutSection';
 import ArticleHeadline from '../elements/ArticleHeadline';
 import LoadingText from '../elements/LoadingText';
 import { getRecentArticles } from '../services/ArticleService'
@@ -28,8 +29,8 @@ function Home() {
     if (!isLoaded) {
         return <LoadingText />
     } else {
-        return (<div>
-            <div className="home home-flex-container">
+        return (<div className="home">
+            <div className="articles articles-grid-elem articles-flex-container">
                 {articles.map(v => {
                     return (<ArticleHeadline
                         title={v.title}
@@ -40,10 +41,15 @@ function Home() {
                         date={v.date}
                     />)
                 })}
+                <div className="bigMarginTop">
+                    <button className="lowkeyButton center" onClick={loadMoreArticles}>Load more...</button>
+                </div>
             </div>
-            <div className="bigMarginTop">
-                <button className="lowkeyButton center" onClick={loadMoreArticles}>Load more...</button>
+            
+            <div className="about-grid-elem ">
+                <AboutSection />
             </div>
+            
         </div>);
     }
 
