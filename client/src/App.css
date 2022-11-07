@@ -95,6 +95,7 @@ body {
 
 .about-social-links {
   grid-area: socials;
+  text-align: right;
 }
 
 .about-body {
@@ -338,6 +339,12 @@ body {
   height: 1.5em;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.socials-link {
+  color: var(--main-color);
+  margin: 2px;
+  font-size: 1.25em;
 }
 
 ::placeholder {
